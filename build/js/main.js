@@ -1,44 +1,27 @@
 "use strict";
-// /*
-//  * type and anotation
-//  */
-// let animal: string = "lion";
-// function tambah(a: number, b: number): number {
-//   return a + b;
-// }
-// console.log(tambah(1, 2));
-// let mobil: { merk: string; tahun: number } = {
-//   merk: "honda",
-//   tahun: 2020,
-// };
-// console.log(mobil.merk);
-// function contoh() {
-//   return function (
-//     target: any,
-//     propertyKey: string,
-//     descriptor: PropertyDescriptor,
-//   ) {
-//     console.log("contoh di jalankan");
-//   };
-// }
-//
-// class Example {
-//   @contoh()
-//   method() {}
-// }
-//
-// new Example().method();
-/**
- *
- * variabel
- */
-let x = 10;
-let y = "hello";
-console.log(x, y);
-let z = 130;
-let w = "kocak";
-console.log(z, w);
-function testingNumber(a, b) {
-    return a + b;
-}
-console.log(testingNumber(10, 20));
+// tpye data string
+let _nik = "Nik";
+let $nama = "alif";
+let namaDepan = "Hadis";
+//type data number
+let angka = 123;
+let angka2 = 123.123;
+//type data boolean
+let z = true;
+z = false;
+z = true;
+//type data bigInt
+let a;
+a = 123n;
+//symbol
+let symbol;
+symbol = Symbol("foo");
+//null
+let b;
+b = null;
+//undefined
+let c;
+c = undefined;
+//void
+let d;
+d = undefined;
