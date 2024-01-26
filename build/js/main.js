@@ -1,32 +1,44 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-/*
- * type and anotation
+// /*
+//  * type and anotation
+//  */
+// let animal: string = "lion";
+// function tambah(a: number, b: number): number {
+//   return a + b;
+// }
+// console.log(tambah(1, 2));
+// let mobil: { merk: string; tahun: number } = {
+//   merk: "honda",
+//   tahun: 2020,
+// };
+// console.log(mobil.merk);
+// function contoh() {
+//   return function (
+//     target: any,
+//     propertyKey: string,
+//     descriptor: PropertyDescriptor,
+//   ) {
+//     console.log("contoh di jalankan");
+//   };
+// }
+//
+// class Example {
+//   @contoh()
+//   method() {}
+// }
+//
+// new Example().method();
+/**
+ *
+ * variabel
  */
-let animal = "lion";
-function tambah(a, b) {
+let x = 10;
+let y = "hello";
+console.log(x, y);
+let z = 130;
+let w = "kocak";
+console.log(z, w);
+function testingNumber(a, b) {
     return a + b;
 }
-console.log(tambah(1, 2));
-let mobil = {
-    merk: "honda",
-    tahun: 2020,
-};
-console.log(mobil.merk);
-function contoh() {
-    return function (target, propertyKey, descriptor) {
-        console.log("contoh di jalankan");
-    };
-}
-class Example {
-    method() { }
-}
-__decorate([
-    contoh()
-], Example.prototype, "method", null);
-new Example().method();
+console.log(testingNumber(10, 20));
