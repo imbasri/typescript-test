@@ -1,44 +1,66 @@
-console.log("Hello world");
-// type data any yaitu bebas atau me-ignore type data
-let data: any = {
-  name: "Nik",
-  age: 20,
-};
-console.log(data.name);
-let w: unknown = 1;
-w = "string";
-w = {
-  runNonExixtsMethod: () => {
-    console.log("runNonExixtsMethod");
-  },
-} as { runNonExixtsMethod: () => void };
+import { Account } from "./entity/Account";
+import { Animal } from "./entity/Animal";
+import { Shape } from "./entity/Shape";
+//membuat object
+let animal = new Animal("Lion", 5);
+animal.showInfo();
 
-//type data never menjalankan / return error
+//inhitance class (pewarisan)
 
-function throwError(message: string): never {
-  throw new Error(message);
-}
-
-// throwError("error nich");
-function assertNever(x: never): never {
-  throw new Error("error" + x);
-}
-
-function printAnimal(animal: "cat" | "dog" | "bird"): void {
-  switch (animal) {
-    case "cat":
-      console.log("cat");
-      break;
-    case "dog":
-      console.log("dog");
-      break;
-    case "bird":
-      console.log("bird");
-      break;
-    default:
-      assertNever(animal);
+class Cat extends Animal {
+  call: string;
+  constructor(name: string, age: number, call: string) {
+    super(name, age);
+    this.call = call;
+  }
+  showInfo() {
+    super.showInfo();
+    console.log(`My call is ${this.call}`);
   }
 }
 
-printAnimal("cat");
-// printAnimal("cat2");
+let cat = new Cat("Waaaww", 10, "meow");
+cat.showInfo();
+
+let account = new Account(12, "John Doe", 1000);
+account.deposit(500);
+console.log(account);
+
+class Circle extends Shape {
+  private radius: number;
+  constructor(color: string, radius: number) {
+    super(color);
+    this.radius = radius;
+  }
+  getArea() {
+    return this.radius * this.radius * Math.PI;
+  }
+  showInfo(): void {
+    super.showInfo();
+    console.log(`Radius: ${this.getArea()}`);
+  }
+}
+
+class Rectangle extends Shape {
+  private length: number;
+  private width: number;
+  constructor(color: string, length: number, width: number) {
+    super(color);
+    this.length = length;
+    this.width = width;
+  }
+  getArea() {
+    return this.length * this.width;
+  }
+  showInfo(): void {
+    super.showInfo();
+    console.log(`Length: ${this.length}, Width: ${this.width}`);
+  }
+}
+
+let shape1: Shape = new Circle("red", 5);
+let shape2: Shape = new Rectangle("blue", 10, 5);
+console.log(shape1.getArea());
+console.log(shape2.getArea());
+shape1.showInfo();
+shape2.showInfo();
