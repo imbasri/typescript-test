@@ -1,27 +1,40 @@
 "use strict";
-// tpye data string
-let _nik = "Nik";
-let $nama = "alif";
-let namaDepan = "Hadis";
-//type data number
-let angka = 123;
-let angka2 = 123.123;
-//type data boolean
-let z = true;
-z = false;
-z = true;
-//type data bigInt
-let a;
-a = 123n;
-//symbol
-let symbol;
-symbol = Symbol("foo");
-//null
-let b;
-b = null;
-//undefined
-let c;
-c = undefined;
-//void
-let d;
-d = undefined;
+console.log("Hello world");
+// type data any yaitu bebas atau me-ignore type data
+let data = {
+    name: "Nik",
+    age: 20,
+};
+console.log(data.name);
+let w = 1;
+w = "string";
+w = {
+    runNonExixtsMethod: () => {
+        console.log("runNonExixtsMethod");
+    },
+};
+//type data never menjalankan / return error
+function throwError(message) {
+    throw new Error(message);
+}
+// throwError("error nich");
+function assertNever(x) {
+    throw new Error("error" + x);
+}
+function printAnimal(animal) {
+    switch (animal) {
+        case "cat":
+            console.log("cat");
+            break;
+        case "dog":
+            console.log("dog");
+            break;
+        case "bird":
+            console.log("bird");
+            break;
+        default:
+            assertNever(animal);
+    }
+}
+printAnimal("cat");
+// printAnimal("cat2");
