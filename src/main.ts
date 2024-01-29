@@ -1,39 +1,104 @@
 /**
- * membuat function
- *
+ * membuat interface
  */
 
-function displayName(){
-    console.log("Belajar TypeScript");
+interface IEmployee {
+  empCode: number;
+  empName: string;
+  getSalary: (param: number) => number;
 }
 
-displayName() //call function
-
-
-function penjumlahan (x:number,y:number):number{
-    return x+y
-}
-console.log(penjumlahan(20, 2))
-
-let greeting = (name:string):void =>{
-    console.log( "Hello " + name)
-}
-greeting("John")
-
-function greet(greeting:string,name:string){
-    console.log(`${greeting} ${name}`)
+class Employee implements IEmployee {
+  empCode: number;
+  empName: string;
+  constructor(empCode: number, empName: string) {
+    this.empCode = empCode;
+    this.empName = empName;
+  }
+  getSalary(param: number): number {
+    if (param === this.empCode) {
+      return 1000;
+    }
+    return 0;
+  }
 }
 
-greet('Hello', "maman")
+let emp = new Employee(1, "John");
+console.log(emp.getSalary(1));
 
-// tanda tanya ini adalah opsional ?
-function greet2(greeting:string,name?:string){
-    console.log(`${greeting} ${name}`)
+interface Person {
+  name: string;
+  age: number;
+}
+let person:Person={ name:"imbasri",age:20 }
+console.log(person)
+
+interface Greeting{
+  (name:string):string
+}
+let hello :Greeting = (name:string) => `hello ${name}`
+console.log(hello("imbasri"))
+
+interface NumberArray {
+  [index:number]:number
 }
 
-greet2('hello' )
+let array1:NumberArray = [1,2,3]
+console.log(array1)
 
-function getDay(year:number = new Date().getFullYear(),month:number = new Date().getMonth()):number {
-    return new Date(year, month, 0).getDate();
+interface SquareConfig{
+  color?:string
+  width?:number
 }
-console.log(getDay())
+function createSquare(config:SquareConfig):{color:string;area:number}{
+  let newSquare = {color:"white",area:100}
+  if(config.color){
+    newSquare.color = config.color
+  }
+  if(config.width){
+    newSquare.area = config.width*config.width
+  }
+  return newSquare
+}
+let mySquare = createSquare({color:"black"})
+console.log(mySquare)
+
+/**
+ * readonly
+ */
+
+interface Point{
+  readonly x:number
+  readonly y:number
+}
+
+let point1 :Point = {x:10,y:20}
+console.log({x:point1.x,y:point1.y})
+
+/**
+ * extend
+ */
+
+interface Shape{
+  area():number
+}
+interface Colorful{
+  color:string
+}
+
+interface Circle extends Shape,Colorful{
+  radius:number
+}
+class Coba implements Circle{
+  color:string
+  radius:number
+  constructor(color:string,radius:number){
+    this.color = color
+    this.radius = radius
+  }
+  area(): number {
+    return Math.PI * this.radius * this.radius
+  }
+}
+let test = new Coba("red",10)
+console.log(test.area())
