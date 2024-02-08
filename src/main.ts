@@ -1,74 +1,66 @@
 /**
- * access modifier
- * 1.private methodd -> hanya bisa diakses class itu sendiri
- * 2.public ->  bisa diakses di class lain
- * 3.protected -> hanya bisa diakses di class itu sendiri dan turunannya
+ * Readonly 
+ * property can be readonly
  */
 
-class Account{
-  private _id: number;
-  private _name: string;
-  private _balance: number;
-
-constructor(id: number, name: string, balance: number){
-  this._id = id;
-  this._name = name;
-  this._balance = balance;
-}
-
-  public get balance(): number {
-    return this._balance;
+class Cirlce{
+  readonly radius:number
+  constructor(radius:number){
+    this.radius = radius
   }
-  public set balance(value: number) {
-    this._balance = value;
-  }
-  public get name(): string {
-    return this._name;
-  }
-  public set name(value: string) {
-    this._name = value;
-  }
-  public get id(): number {
-    return this._id;
-  }
-  public set id(value: number) {
-    this._id = value;
-  }
-  
-}
-
-let account = new Account(1, "robot", 1000);
-console.log(account.balance);
-
-class Binatang {
-  public name: string;
-  public age:number;
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;    
-
-  }
-  showInfo(){
-    console.log(`name ${this.name} age ${this.age}`);
-  }
-}
-let binatang = new Binatang("sapi", 10);
-binatang.name = "lion";
-binatang.showInfo();
-
-
-class Manusia {
-  nama: string;
-  constructor(nama: string) {
-    this.nama = nama
-  }
-
-  setNama(nama:string){
-    this.nama = nama
+  getArea(){
+    return Math.PI * this.radius * this.radius
   }
 }
 
-let mhs = new Manusia("budi")
-console.log(mhs.nama)
-mhs.setNama("imbasri")
-console.log(mhs.nama)
+let circle = new Cirlce(10)
+// circle.radius = 5
+console.log(circle.getArea())
+console.log(circle.radius)
+
+
+//readonly in interface
+
+interface Person {
+  readonly name:string
+  readonly hobby:ReadonlyArray<string>
+}
+
+let person:Person = {
+  name: 'Tom',
+  hobby: ['Cooking', 'Singing']
+}
+console.log(person.name)
+console.log(person.hobby)
+
+// person.hobby.push('Reading')
+
+//readonly in type
+interface IEmployee {
+  empCode : string
+  empName:string
+}
+
+let emp1 : Readonly<IEmployee> = {
+empCode:'123',
+empName:'Tom'
+}
+console.log(emp1)
+// emp1.empCode = '321'
+
+
+//readonly generic
+
+type ReadonlyPoint<T> = {
+readonly [K in keyof T]:T[K]
+}
+type Point ={
+  x:number
+  y:number
+}
+type ReadonlyPoint2D = Readonly<Point> 
+let point:ReadonlyPoint2D = {
+x:10,
+y:20,
+}
+console.log(point)
