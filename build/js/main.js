@@ -1,33 +1,31 @@
 "use strict";
 /**
- * Readonly
- * property can be readonly
+ * Static
+ * menjalankan sebuah perintah tanpa membuat objek nya dahulu
  */
-class Cirlce {
-    constructor(radius) {
-        this.radius = radius;
-    }
-    getArea() {
-        return Math.PI * this.radius * this.radius;
+class MathUtil {
+    static getCalculatedArea(radius) {
+        return MathUtil.PI * radius * radius;
     }
 }
-let circle = new Cirlce(10);
-// circle.radius = 5
-console.log(circle.getArea());
-console.log(circle.radius);
-let person = {
-    name: 'Tom',
-    hobby: ['Cooking', 'Singing']
-};
-console.log(person.name);
-console.log(person.hobby);
-let emp1 = {
-    empCode: '123',
-    empName: 'Tom'
-};
-console.log(emp1);
-let point = {
-    x: 10,
-    y: 20,
-};
-console.log(point);
+MathUtil.PI = 3.14;
+console.log(MathUtil.PI);
+console.log(MathUtil.getCalculatedArea(5));
+class Employee {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        Employee.headCount++;
+    }
+    /**
+     * getHeadCount
+     */
+    static getHeadCount() {
+        return Employee.headCount;
+    }
+}
+Employee.headCount = 0;
+let jon = new Employee("Jon", "Doe");
+let anna = new Employee("anna", "Smith");
+console.log('nilai', Employee.getHeadCount());
+console.log('nilai', Employee.headCount);
