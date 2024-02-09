@@ -1,34 +1,62 @@
 /**
- * Static 
- * menjalankan sebuah perintah tanpa membuat objek nya dahulu
+ *  Generik 
  */
-class MathUtil {
-  static PI:number = 3.14
-  static getCalculatedArea(radius:number):number {
-    return MathUtil.PI * radius * radius
+
+function identity <T>(arg:T):T{
+    return arg
+}
+let output = identity<string>("myString")
+console.log(output)
+
+let output1 = identity<number>(123)
+console.log(output1)
+
+let output2 = identity<boolean>(true)
+
+interface Lengthwise{
+    length:number
+}
+function loggingIdentity<T extends Lengthwise>(arg:T):T{
+  console.log(arg.length)
+return arg
+}
+loggingIdentity({
+  length:10,value:3
+})
+
+interface IProcessor<T>{
+  result:T
+  process(a:T,b:T):T
+
+}
+class NumberProcessor implements IProcessor<number>{
+  result: number=0
+  process(a: number, b: number): number {
+    this.result=a+b
+    return this.result
   }
 }
 
-console.log(MathUtil.PI)
-console.log(MathUtil.getCalculatedArea(5));
+let  np = new NumberProcessor()
+let hasil = np.process(10, 20)
+console.log(hasil)
 
-class Employee {
-  static headCount: number = 0;
-  constructor(
-    private firstName: string,
-    private lastName: string,
-  ) {
-    Employee.headCount++;
+
+class Stack <T> {
+  private items:T[] = []
+  push(element:T){
+    this.items.push(element)
   }
-  /**
-   * getHeadCount
-   */
-  public static getHeadCount() {
-    return Employee.headCount
+  pop(){
+    return this.items.pop()
   }
 }
-let jon = new Employee("Jon", "Doe");
-let anna = new Employee("anna", "Smith");
 
-console.log('nilai',Employee.getHeadCount())
-console.log('nilai',Employee.headCount)
+let stack = new Stack<number>()
+stack.push(10)
+stack.push(20)
+
+console.log(stack.pop())
+console.log(stack.pop())
+
+
