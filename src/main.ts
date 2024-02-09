@@ -1,44 +1,59 @@
 /**
- * array and tuple 
+ * enum
  */
 
-//cara mendeklarisakan array
-//1.menggunakan type[] tanda kurung
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+console.log(Direction);
+//membuat enum menjadi urutan 1
+enum Direction2 {
+  Up = 1,
+  Down,
+  Left,
+  Right,
+}
+console.log(Direction2);
 
-let fruits= ["apple", "mango", "banana"];
-console.log(fruits)
+enum StatusCodes {
+  notFound = 404,
+  badRequest = 400,
+  internalServerError = 500,
+  success = 200,
+  auth = 401,
+  accept = 402,
+}
 
-let fruits2:Array<string> = ["apple", "mango", "banana"];
-console.log(fruits2)
+console.log(StatusCodes);
+console.log(StatusCodes.success);
 
-let fruits3:Array<string>;
-fruits3=["apple", "mango", "banana"];
-console.log(fruits3)
+enum Color {
+  Red = "#f00",
+  Green = "#0f0",
+  Blue = "#00f",
+}
+console.log(Color);
 
-let numbering :Array<number>
-numbering = [1,2,3,4,5];
-console.log(numbering)
+enum Action {
+  save,
+  delete,
+  update,
+}
 
-let values:Array<number|string> = [1,"hello"];
-console.log(values)
+function getAction(question: string, action: Action) {
+  console.log(question, action);
+}
+getAction("hello", Action.save);
 
-let testing:(string|number)[];
-testing=["hello",1];
-console.log(testing)
+enum Direction3 {
+  Up,
+  Down,
+  Right,
+  Left,
+}
 
-let fruits4 = ["grape", "mango", "banana"];
-console.log(fruits4[1])
-
-//tuple -> membuat array yang berisi tipe data
-let employee:[string,number,boolean] = ['imbasri',2, true]
-console.log(employee)
-
-let user : [number,string,boolean,string]
-user=[1,'imbasri',true,'programmer']
-console.log(user)
-
-let numbers : [first:string,second:number,...rest:number[]]
-numbers = ['hello',1,2,3,4]
-numbers[3]=500
-numbers.push(20,"testing")
-console.log(numbers)
+console.log(Direction3.Up);
+console.log(Direction3[0]);
