@@ -1,59 +1,21 @@
 /**
- * enum
+ * union
+ * penggabungan beberapa tipe data , menggunakan |
  */
 
-enum Direction {
-  Up,
-  Down,
-  Left,
-  Right,
-}
-console.log(Direction);
-//membuat enum menjadi urutan 1
-enum Direction2 {
-  Up = 1,
-  Down,
-  Left,
-  Right,
-}
-console.log(Direction2);
+let code: string | number;
+code = 123;
+code = "hello";
+// code = true ini akan error karena tipe data number dan string tidak sama
 
-enum StatusCodes {
-  notFound = 404,
-  badRequest = 400,
-  internalServerError = 500,
-  success = 200,
-  auth = 401,
-  accept = 402,
+function printCode(code: string | number) {
+  console.log(`code : ${code}`);
+  if (typeof code == "string") {
+    console.log(`string code : ${code}`);
+  } else {
+    console.log(`number code : ${code}`);
+  }
 }
 
-console.log(StatusCodes);
-console.log(StatusCodes.success);
-
-enum Color {
-  Red = "#f00",
-  Green = "#0f0",
-  Blue = "#00f",
-}
-console.log(Color);
-
-enum Action {
-  save,
-  delete,
-  update,
-}
-
-function getAction(question: string, action: Action) {
-  console.log(question, action);
-}
-getAction("hello", Action.save);
-
-enum Direction3 {
-  Up,
-  Down,
-  Right,
-  Left,
-}
-
-console.log(Direction3.Up);
-console.log(Direction3[0]);
+printCode(123);
+printCode("hello");
