@@ -1,62 +1,61 @@
 /**
- *  Generik 
+ *  Looping 
  */
 
-function identity <T>(arg:T):T{
-    return arg
+let sum:number = 0
+for (let i:number = 1; i < 10; i++) {
+  sum += i
 }
-let output = identity<string>("myString")
-console.log(output)
+console.log(sum)
+let fruits :string[] =[ "apple", "banana", "orange", "mango"]
 
-let output1 = identity<number>(123)
-console.log(output1)
-
-let output2 = identity<boolean>(true)
-
-interface Lengthwise{
-    length:number
+for (const fruit of fruits) {
+  console.log(fruit)
 }
-function loggingIdentity<T extends Lengthwise>(arg:T):T{
-  console.log(arg.length)
-return arg
-}
-loggingIdentity({
-  length:10,value:3
-})
 
-interface IProcessor<T>{
-  result:T
-  process(a:T,b:T):T
-
+let person:any = {
+  name: "John",
+  age: 30,
+  gender:"male",
 }
-class NumberProcessor implements IProcessor<number>{
-  result: number=0
-  process(a: number, b: number): number {
-    this.result=a+b
-    return this.result
+
+for (const key in person) {
+  console.log(key, person[key])
+}
+
+let i:number = 1
+while(i < 5) {
+  console.log(i)
+  i++
+}
+
+i=1
+do{
+console.log(i)
+i++
+}while(i<=5)
+
+
+i=1
+while(1<=5){
+  console.log(i)
+  i++
+  if(i==3){
+    break
   }
 }
 
-let  np = new NumberProcessor()
-let hasil = np.process(10, 20)
-console.log(hasil)
 
+let day:string = "Monday"
 
-class Stack <T> {
-  private items:T[] = []
-  push(element:T){
-    this.items.push(element)
-  }
-  pop(){
-    return this.items.pop()
-  }
+switch (day) {
+  case "Monday":
+    console.log(day)
+    break;
+case "Tuesday":
+  console.log('tuesday')
+  break
+  default:
+    console.log('invalid day')
+    break;
 }
-
-let stack = new Stack<number>()
-stack.push(10)
-stack.push(20)
-
-console.log(stack.pop())
-console.log(stack.pop())
-
-
